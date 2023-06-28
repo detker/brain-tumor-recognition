@@ -1,6 +1,8 @@
 streamlit==1.23.1
 numpy==1.23.5
 pandas==1.5.3
+tensorflow
 keras==2.9.0
 scikit-image
 opencv-python
+
