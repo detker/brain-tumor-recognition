@@ -18,7 +18,7 @@ import math
 
 def find_exp(number):
     base_10 = math.log10(number)
-    return abs(math.floor(base10))
+    return abs(math.floor(base_10))
 
 # decorator for storing model data in cache
 @st.cache_resource()
