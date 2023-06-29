@@ -27,7 +27,7 @@ def load_model_f():
 def preprocess_img(uploaded_img):
     pic = np.array(io.imread(uploaded_img))
     pic_resized = cv2.resize(pic, (150, 150))
-    pic_resized = pic_resized.reshape(1, 150, 150, 3)
+    pic_resized = pic_resized.reshape(, 150, 150, 3)
     
     return pic_resized
 
