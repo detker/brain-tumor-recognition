@@ -46,7 +46,7 @@ def show_results(y_hat, labels):
     
     df = pd.DataFrame(y_hat, index=labels, columns=['probability'])
     df.index.name = 'type of tumor'
-    #df['probability'] = df['probability'].apply(lambda x: '< 0.000000001' if x<0.000000001 else round(x, 9))
+    df['probability'] = df['probability'].apply(lambda x: '< 0.001' if x<0.001 else round(x, 3))
     
     with st.expander('##### expand for prediction details:'):
         st.dataframe(df)
