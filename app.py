@@ -14,6 +14,11 @@ import pandas as pd
 from keras.models import load_model
 from skimage import io
 import cv2
+import math
+
+def find_exp(number):
+    base_10 = math.log10(number)
+    return abs(math.floor(base10))
 
 # decorator for storing model data in cache
 @st.cache_resource()
@@ -46,7 +51,8 @@ def show_results(y_hat, labels):
     
     df = pd.DataFrame(y_hat, index=labels, columns=['probability'])
     df.index.name = 'type of tumor'
-    df['probability'] = df['probability'].apply(lambda x: round(x, 1_000_000))
+    exp = find_exp(min(y_hat))
+    df['probability'] = df['probability'].apply(lambda x: round(x, 10 ** exp))
     
     with st.expander('##### expand for prediction details:'):
         st.dataframe(df)
