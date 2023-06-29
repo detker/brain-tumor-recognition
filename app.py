@@ -52,7 +52,7 @@ def show_results(y_hat, labels):
     df = pd.DataFrame(y_hat, index=labels, columns=['probability'])
     df.index.name = 'type of tumor'
     exp = find_exp(min(y_hat))
-    df['probability'] = df['probability'].apply(lambda x: round(x, 10 ** (exp+10000000000)))
+    df['probability'] = df['probability'].apply(lambda x: round(x, 10 ** (exp+100)))
     
     with st.expander('##### expand for prediction details:'):
         st.dataframe(df)
