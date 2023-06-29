@@ -4,5 +4,5 @@ pandas==1.5.3
 tensorflow
 keras==2.9.0
 scikit-image
-opencv-python
+opencv-python-headless
 protobuf==3.20.*
