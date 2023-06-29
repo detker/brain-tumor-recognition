@@ -32,7 +32,7 @@ def load_model_f():
 def preprocess_img(uploaded_img):
     pic = np.array(io.imread(uploaded_img))
     pic_resized = cv2.resize(pic, (150, 150))
-    if len(pic_resized) == 150*150:
+    if len(pic_resized) <= 150*150*3:
         help = np.zeros((150, 150, 3))
         help[:, :, 0] = pic_resized
         help[:, :, 1] = pic_resized
@@ -52,7 +52,7 @@ def show_results(y_hat, labels):
     df = pd.DataFrame(y_hat, index=labels, columns=['probability'])
     df.index.name = 'type of tumor'
     exp = find_exp(min(y_hat))
-    df['probability'] = df['probability'].apply(lambda x: round(x, 100 ** (exp+1)))
+    df['probability'] = df['probability'].apply(lambda x: round(x, 10 ** (exp+1)))
     
     with st.expander('##### expand for prediction details:'):
         st.dataframe(df)
