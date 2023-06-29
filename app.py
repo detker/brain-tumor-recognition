@@ -27,7 +27,7 @@ def load_model_f():
 def preprocess_img(uploaded_img):
     pic = np.array(io.imread(uploaded_img))
     pic_resized = cv2.resize(pic, (150, 150))
-    if pic_resized.shape[2] == 1:
+    if len(pic_resized) == 150*150:
         help = np.zeros((150, 150, 3))
         help[:, :, 0] = pic_resized
         help[:, :, 1] = pic_resized
